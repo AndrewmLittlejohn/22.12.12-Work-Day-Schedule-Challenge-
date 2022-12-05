@@ -31,12 +31,12 @@ body {
   border-bottom: 1px dashed #000000;
 }
 
-.blank {
+#eight {
     background-color: rgb(128, 128, 128);
     color: navy
 }
 
-.past {
+.cuspast {
   background-color: #b5ddf3;
   color: Navy;
 }

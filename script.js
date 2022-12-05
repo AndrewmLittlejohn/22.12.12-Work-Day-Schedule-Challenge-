@@ -27,38 +27,30 @@
 var saveBtn = document.querySelector('.saveBtn');
 var textEight = document.querySelector('#eight');
 var hour8 = document.querySelector('#hour-8');
-var contents8A = document.querySelector('#saved8Details');
 
 var content = [];
 
-load();
-function load(){ 
+init();
+function init(){ 
 if (localStorage.getItem('8am Details') !== null ) {
-return contents8A = localStorage.getItem('8am Details');
-}}
+  textEight = localStorage.getItem('8am Details');
+document.querySelector('#eight').textContent = textEight;
 
-
-
+}
+}
 console.log(textEight);
-
-
 
 renderSavedDetails();
 
+// function and click below save the content added to the <textareas> 
 function renderSavedDetails() {
-
   var h8Details = localStorage.getItem("8am Details"); 
   if(h8Details != '') {
   return;
   }
-  
- textEight.innerHTML = h8Details;
-
 };
-
 saveBtn.addEventListener('click', function(event) {
   event.preventDefault();
-
   var h8Details = document.querySelector("#eight").value;
   // textEight.textContent = h8Details; 
   if(h8Details === ''){ 
@@ -68,22 +60,30 @@ saveBtn.addEventListener('click', function(event) {
 
   localStorage.setItem('8am Details', h8Details);
   console.log(h8Details);
-}});
+  }
+});
 
-   
-
-
-
-
-
-
+//// below calls the date information, and less specifically the hour info for deciding the color of the <textarea>(s)
 
 document.getElementById("timestamp").innerHTML = dayjs().format('ddd, MMM D, YYYY h:mm A ');
 document.getElementById("workingtimestamp").innerHTML = dayjs().format('H');
-
-
 console.log(dayjs().format('ddd, MMM D, YYYY h:mm A '))
 console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
 console.log(dayjs().format('H'));
+var hour = dayjs().format('H')
 
+console.log(hour);
+
+function TextFieldColor() {
+
+  if (hour < 8){
+  textEight.addClass('.future');
+  } if (hour > 8) {
+  textEight.addClass('past');
+  } if (hour == 8) {
+    textEight.addClass('present');
+  } else { return; }
+  }
+
+  TextFieldColor();
 
