@@ -1,89 +1,491 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-// $(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-// });
+document.getElementById("timestamp").innerHTML = dayjs().format('ddd, MMM D, YYYY h:mm A ');
+console.log(dayjs().format('ddd, MMM D, YYYY h:mm A '))
+console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
+console.log(dayjs().format('H'));
+var hour = dayjs().format('H');
 
-// var calendarInput = $('#hour-8'.textarea);
+var saveBtn8 = document.querySelector('#savebtn8');
+var saveBtn9 = document.querySelector('#savebtn9');
+var saveBtn10 = document.querySelector('#savebtn10');
+var saveBtn11 = document.querySelector('#savebtn11');
+var saveBtn12 = document.querySelector('#savebtn12');
+var saveBtn1 = document.querySelector('#savebtn1');
+var saveBtn2 = document.querySelector('#savebtn2');
+var saveBtn3 = document.querySelector('#savebtn3');
+var saveBtn4 = document.querySelector('#savebtn4');
+var saveBtn5 = document.querySelector('#savebtn5');
 
-var saveBtn = document.querySelector('.saveBtn');
-var textEight = document.querySelector('#eight');
-var hour8 = document.querySelector('#hour-8');
+var textEight = $('#eight');
+var textNine = $('#nine');
+var textTen = $('#ten');
+var textEleven = $('#eleven');
+var textTwelve = $('#twelve');
+var textOne = $('#one');
+var textTwo = $('#two');
+var textThree = $('#three');
+var textFour = $('#four');
+var textFive = $('#five');
 
-var content = [];
+var h8Details = localStorage.getItem("8am Details"); 
+var h9Details = localStorage.getItem("9am Details"); 
+var h10Details = localStorage.getItem("10am Details"); 
+var h11Details = localStorage.getItem("11am Details"); 
+var h12Details = localStorage.getItem("12pm Details"); 
+var h1Details = localStorage.getItem("1pm Details"); 
+var h2Details = localStorage.getItem("2pm Details"); 
+var h3Details = localStorage.getItem("3pm Details"); 
+var h4Details = localStorage.getItem("4pm Details"); 
+var h5Details = localStorage.getItem("5pm Details"); 
+
+textFieldColor8();
+/* #region main additional textFieldColor functions */
+textFieldColor9();
+textFieldColor10();
+textFieldColor11();
+textFieldColor12();
+textFieldColor1();
+textFieldColor2();
+textFieldColor3();
+textFieldColor4();
+textFieldColor5();
+/* #endregion */ 
 
 init();
+/* #region main additional init functions  */
+init1();
+init2();
+init3();
+init4();
+init5();
+init6();
+init7();
+init8();
+init9();
+/* #endregion */ 
+
+
+renderSavedDetails();
+/* #region main additional renderSavedDetails functions  */
+renderSavedDetails1();
+renderSavedDetails2();
+renderSavedDetails3();
+renderSavedDetails4();
+renderSavedDetails5();
+renderSavedDetails6();
+renderSavedDetails7();
+renderSavedDetails8();
+renderSavedDetails9();
+/* #endregion */ 
+
+
 function init(){ 
 if (localStorage.getItem('8am Details') !== null ) {
   textEight = localStorage.getItem('8am Details');
-document.querySelector('#eight').textContent = textEight;
+  document.getElementById('eight').textContent = textEight;
+} }
+/* #region Main Additional init functions*/
+function init1(){ 
+if (localStorage.getItem('9am Details') !== null ) {
+  textNine = localStorage.getItem('9am Details');
+  document.getElementById('nine').textContent = textNine;
+}}
 
-}
-}
-console.log(textEight);
+function init2(){
+if (localStorage.getItem('10am Details') !== null ) {
+  textTen = localStorage.getItem('10am Details');
+  document.getElementById('ten').textContent = textTen;
+} }
 
-renderSavedDetails();
+function init3(){
+if (localStorage.getItem('11am Details') !== null ) {
+  textEleven = localStorage.getItem('11am Details');
+  document.getElementById('eleven').textContent = textEleven;
+}}
 
-// function and click below save the content added to the <textareas> 
-function renderSavedDetails() {
-  var h8Details = localStorage.getItem("8am Details"); 
-  if(h8Details != '') {
-  return;
+function init4(){
+if (localStorage.getItem('12pm Details') !== null ) {
+  textTwelve = localStorage.getItem('12pm Details');
+  document.getElementById('twelve').textContent = textTwelve;
+}}
+
+function init5(){
+if (localStorage.getItem('1pm Details') !== null ) {
+  textOne = localStorage.getItem('1pm Details');
+  document.getElementById('one').textContent = textOne;
+}}
+
+function init6(){
+if (localStorage.getItem('2pm Details') !== null ) {
+  textTwo = localStorage.getItem('2pm Details');
+  document.getElementById('two').textContent = textTwo;
+}}
+
+function init7(){
+if (localStorage.getItem('3pm Details') !== null ) {
+  textThree = localStorage.getItem('3pm Details');
+  document.getElementById('three').textContent = textThree;
+}}
+
+function init8(){
+if (localStorage.getItem('4pm Details') !== null ) {
+  textFour = localStorage.getItem('4pm Details');
+  document.getElementById('four').textContent = textFour;
+}}
+function init9(){
+if (localStorage.getItem('5pm Details') !== null ) {
+  textFive = localStorage.getItem('5pm Details');
+  document.getElementById('five').textContent = textFive;
+} }
+
+/* #endregion */
+
+ 
+function textFieldColor8() {
+  if (hour > 8){
+  textEight.addClass('past');
+  console.log('dave');
+  } if (hour == 8) {
+  textEight.addClass('present');
+  console.log('bob');
+  } if (hour < 8) { 
+  textEight.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+/* #region Main -- Additional meeting block color functions */
+function textFieldColor9(){
+  if (hour > 9){
+  textNine.addClass('past');
+  console.log('dave');
+  } else if (hour == 9) {
+  textNine.addClass('present');
+  console.log('bob');
+  } else if (hour < 9) { 
+  textNine.addClass('future');
+  console.log('andrew');
   }
 };
-saveBtn.addEventListener('click', function(event) {
-  event.preventDefault();
+
+function textFieldColor10() {
+  if (hour > 10){
+  textTen.addClass('past');
+  console.log('dave');
+  } if (hour == 10) {
+  textTen.addClass('present');
+  console.log('bob');
+  } if (hour < 10) { 
+  textTen.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+function textFieldColor11() {
+  if (hour > 11){
+  textEleven.addClass('past');
+  console.log('dave');
+  } if (hour == 11) {
+  textEleven.addClass('present');
+  console.log('bob');
+  } if (hour < 11) { 
+  textEleven.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+function textFieldColor12() {
+  if (hour > 12){
+  textTwelve.addClass('past');
+  console.log('dave');
+  } if (hour == 12) {
+  textTwelve.addClass('present');
+  console.log('bob');
+  } if (hour < 12) { 
+  textTwelve.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+function textFieldColor1() {
+  if (hour > 13){
+  textOne.addClass('past');
+  console.log('dave');
+  } if (hour == 13) {
+  textOne.addClass('present');
+  console.log('bob');
+  } if (hour < 13) { 
+  textOne.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+function textFieldColor2() {
+  if (hour > 14){
+  textTwo.addClass('past');
+  console.log('dave');
+  } if (hour == 14) {
+  textTwo.addClass('present');
+  console.log('bob');
+  } if (hour < 14) { 
+  textTwo.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+function textFieldColor3() {
+  if (hour > 15){
+  textThree.addClass('past');
+  console.log('dave');
+  } if (hour == 15) {
+  textThree.addClass('present');
+  console.log('bob');
+  } if (hour < 15) { 
+  textThree.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+function textFieldColor4() {
+  if (hour > 16){
+  textFour.addClass('past');
+  console.log('dave');
+  } if (hour == 16) {
+  textFour.addClass('present');
+  console.log('bob');
+  } if (hour < 16) { 
+  textFour.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+function textFieldColor5() {
+  if (hour > 17){
+  textFive.addClass('past');
+  console.log('dave');
+  } if (hour == 17) {
+  textFive.addClass('present');
+  console.log('bob');
+  } if (hour < 17) { 
+  textFive.addClass('future');
+  console.log('andrew');
+  } else {null} 
+};
+/* #endregion */
+
+ 
+function renderSavedDetails() {
+  if(h8Details != '') {
+  return;
+   } 
+  };
+  /* #region Main -- Additional render saved details functions */
+    function renderSavedDetails1() {
+      if(h9Details != '') {
+      return;}
+  };
+  function renderSavedDetails2() {
+    if(h10Details != '') {
+      return;}
+  };
+  function renderSavedDetails3() {
+    if(h11Details != '') {
+      return;}
+  };
+  function renderSavedDetails4() {
+    if(h12Details != '') {
+      return;}
+  };
+  function renderSavedDetails5() {
+    if(h1Details != '') {
+      return;}
+  };
+  function renderSavedDetails6() {
+    if(h2Details != '') {
+      return;}
+  };
+  function renderSavedDetails7() {
+    if(h3Details != '') {
+      return;}
+  };
+  function renderSavedDetails8() {
+   if(h4Details != '') {
+      return;}
+  };
+  function renderSavedDetails9() {
+    if(h5Details != '') {
+      return;}
+  };
+/* #endregion */
+
+
+function check8(){
   var h8Details = document.querySelector("#eight").value;
-  // textEight.textContent = h8Details; 
   if(h8Details === ''){ 
   alert('No event details provided')
   } else { 
     console.log('Event Saved');
-
   localStorage.setItem('8am Details', h8Details);
   console.log(h8Details);
   }
-});
-
-//// below calls the date information, and less specifically the hour info for deciding the color of the <textarea>(s)
-
-document.getElementById("timestamp").innerHTML = dayjs().format('ddd, MMM D, YYYY h:mm A ');
-document.getElementById("workingtimestamp").innerHTML = dayjs().format('H');
-console.log(dayjs().format('ddd, MMM D, YYYY h:mm A '))
-console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
-console.log(dayjs().format('H'));
-var hour = dayjs().format('H')
-
-console.log(hour);
-
-function TextFieldColor() {
-
-  if (hour < 8){
-  textEight.addClass('.future');
-  } if (hour > 8) {
-  textEight.addClass('past');
-  } if (hour == 8) {
-    textEight.addClass('present');
-  } else { return; }
+};
+/* #region Main -- Additional check for details to save to local storage */
+function check9(){
+var h9Details = document.querySelector("#nine").value;
+if (h9Details==='') {
+  alert('No event details provided')
+} else {     
+  console.log('Event Saved');
+localStorage.setItem('9am Details', h9Details);
+console.log(h9Details);
   }
+};
 
-  TextFieldColor();
+function check10(){
+  var h10Details = document.querySelector("#ten").value;
+  if (h10Details==='') {
+    alert('No event details provided')
+  } else {     
+    console.log('Event Saved');
+  localStorage.setItem('10am Details', h10Details);
+  console.log(h10Details);
+    }
+};
 
+function check11(){
+  var h11Details = document.querySelector("#eleven").value;
+  if (h11Details==='') {
+    alert('No event details provided')
+  } else {     
+    console.log('Event Saved');
+  localStorage.setItem('11am Details', h11Details);
+  console.log(h11Details);
+    }
+};
+
+function check12(){
+  var h12Details = document.querySelector("#twelve").value;
+  if (h12Details==='') {
+    alert('No event details provided')
+  } else {     
+    console.log('Event Saved');
+  localStorage.setItem('12pm Details', h12Details);
+  console.log(h12Details);
+    }
+};
+
+function check1(){
+  var h1Details = document.querySelector("#one").value;
+  if (h1Details==='') {
+    alert('No event details provided')
+  } else {     
+    console.log('Event Saved');
+  localStorage.setItem('1pm Details', h1Details);
+  console.log(h1Details);
+    }
+};
+
+function check2(){
+  var h2Details = document.querySelector("#two").value;
+  if (h2Details==='') {
+    alert('No event details provided')
+  } else {     
+    console.log('Event Saved');
+  localStorage.setItem('2pm Details', h2Details);
+  console.log(h2Details);
+    }
+};
+
+function check3(){
+  var h3Details = document.querySelector("#three").value;
+  if (h3Details==='') {
+    alert('No event details provided')
+  } else {     
+    console.log('Event Saved');
+  localStorage.setItem('3pm Details', h3Details);
+  console.log(h3Details);
+    }
+};
+
+function check4(){
+  var h4Details = document.querySelector("#four").value;
+  if (h4Details==='') {
+    alert('No event details provided')
+  } else {     
+    console.log('Event Saved');
+  localStorage.setItem('4pm Details', h4Details);
+  console.log(h4Details);
+    }
+};
+
+function check5(){
+  var h5Details = document.querySelector("#five").value;
+  if (h5Details==='') {
+    alert('No event details provided')
+  } else {     
+    console.log('Event Saved');
+  localStorage.setItem('5pm Details', h5Details);
+  console.log(h5Details);
+    }
+};
+/* #endregion */
+
+
+saveBtn8.addEventListener('click', function(event) {
+  event.preventDefault();
+  check8();
+ });
+/*#region Main - Save Buttons functions */
+saveBtn9.addEventListener('click', function(event) {
+  event.preventDefault();
+  check9();
+  }
+);
+saveBtn10.addEventListener('click', function(event) {
+  event.preventDefault();
+  check10();
+  }
+);
+saveBtn11.addEventListener('click', function(event) {
+  event.preventDefault();
+  check11();
+  }
+);
+saveBtn12.addEventListener('click', function(event) {
+  event.preventDefault();
+  check12();
+  }
+);
+saveBtn1.addEventListener('click', function(event) {
+  event.preventDefault();
+  check1();
+  }
+);
+saveBtn2.addEventListener('click', function(event) {
+  event.preventDefault();
+  check2();
+  }
+);
+saveBtn3.addEventListener('click', function(event) {
+  event.preventDefault();
+  check3();
+  }
+);
+saveBtn4.addEventListener('click', function(event) {
+  event.preventDefault();
+  check4();
+  }
+);
+saveBtn5.addEventListener('click', function(event) {
+  event.preventDefault();
+  check5();
+  }
+);
+/* #endregion */
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+  

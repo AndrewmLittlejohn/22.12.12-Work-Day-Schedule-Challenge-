@@ -3,14 +3,12 @@ body {
   font-size: 16px;
 }
 
-/* textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
+textarea {
+  background-color: rgb(128, 128, 128);
+  color: navy;
+   border-left: 1px solid black;
   padding: 10px; 
-} */
+}
 
 .description {
   white-space: pre-wrap;
@@ -31,18 +29,18 @@ body {
   border-bottom: 1px dashed #000000;
 }
 
-#eight {
+/* #eight {
     background-color: rgb(128, 128, 128);
     color: navy
-}
+} */
 
-.cuspast {
-  background-color: #b5ddf3;
+.past {
+  background-color: #f67575;
   color: Navy;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: #61d5ff;
   color: white;
 }
 
