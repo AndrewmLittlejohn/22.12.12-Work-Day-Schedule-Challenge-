@@ -143,123 +143,93 @@ if (localStorage.getItem('5pm Details') !== null ) {
 function textFieldColor8() {
   if (hour > 8){
   textEight.addClass('past');
-  console.log('dave');
   } if (hour == 8) {
   textEight.addClass('present');
-  console.log('bob');
   } if (hour < 8) { 
   textEight.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 /* #region Main -- Additional meeting block color functions */
 function textFieldColor9(){
   if (hour > 9){
   textNine.addClass('past');
-  console.log('dave');
   } else if (hour == 9) {
   textNine.addClass('present');
-  console.log('bob');
   } else if (hour < 9) { 
   textNine.addClass('future');
-  console.log('andrew');
   }
 };
 
 function textFieldColor10() {
   if (hour > 10){
   textTen.addClass('past');
-  console.log('dave');
   } if (hour == 10) {
   textTen.addClass('present');
-  console.log('bob');
   } if (hour < 10) { 
   textTen.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 function textFieldColor11() {
   if (hour > 11){
   textEleven.addClass('past');
-  console.log('dave');
   } if (hour == 11) {
   textEleven.addClass('present');
-  console.log('bob');
   } if (hour < 11) { 
   textEleven.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 function textFieldColor12() {
   if (hour > 12){
   textTwelve.addClass('past');
-  console.log('dave');
   } if (hour == 12) {
   textTwelve.addClass('present');
-  console.log('bob');
   } if (hour < 12) { 
   textTwelve.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 function textFieldColor1() {
   if (hour > 13){
   textOne.addClass('past');
-  console.log('dave');
   } if (hour == 13) {
   textOne.addClass('present');
-  console.log('bob');
   } if (hour < 13) { 
   textOne.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 function textFieldColor2() {
   if (hour > 14){
   textTwo.addClass('past');
-  console.log('dave');
   } if (hour == 14) {
   textTwo.addClass('present');
-  console.log('bob');
   } if (hour < 14) { 
   textTwo.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 function textFieldColor3() {
   if (hour > 15){
   textThree.addClass('past');
-  console.log('dave');
   } if (hour == 15) {
   textThree.addClass('present');
-  console.log('bob');
   } if (hour < 15) { 
   textThree.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 function textFieldColor4() {
   if (hour > 16){
   textFour.addClass('past');
-  console.log('dave');
   } if (hour == 16) {
   textFour.addClass('present');
-  console.log('bob');
   } if (hour < 16) { 
   textFour.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 function textFieldColor5() {
   if (hour > 17){
   textFive.addClass('past');
-  console.log('dave');
   } if (hour == 17) {
   textFive.addClass('present');
-  console.log('bob');
   } if (hour < 17) { 
   textFive.addClass('future');
-  console.log('andrew');
   } else {null} 
 };
 /* #endregion */
